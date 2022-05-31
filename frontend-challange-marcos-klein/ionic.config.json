@@ -1,0 +1,7 @@
+{
+  "name": "frontend-challange-marcos-klein",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
