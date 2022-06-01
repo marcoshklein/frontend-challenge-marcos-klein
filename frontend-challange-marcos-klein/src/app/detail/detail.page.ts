@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../services/api.service';
-import { IappState, setHolidays } from '../store/app.state';
+import { clearHolidays, IappState, loadHolidaysByCountry, setHolidays } from '../store/app.state';
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +16,6 @@ export class DetailPage implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService,
     private store: Store<{app : IappState}>
   ) {
 
@@ -38,10 +37,12 @@ export class DetailPage implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.store.dispatch(clearHolidays());
+  }
+
   getHolidays() {
-    this.api.getHolidays(this.contrieCode, '2022').subscribe(res => {
-      this.store.dispatch(setHolidays({payload: res.holidays}))
-    })
+    this.store.dispatch(loadHolidaysByCountry({payload: this.contrieCode}));
   }
 
 }

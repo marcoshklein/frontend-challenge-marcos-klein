@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { ApiService } from '../services/api.service';
-import { IappState, loadCountries, setCountries, successLoadCountries } from './app.state';
+import { IappState, loadCountries, setCountries, setHolidays, successLoadCountries } from './app.state';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class CountriesEffectService {
     private store: Store<{ app: IappState }>
   ) { }
 
-  loadCountries = createEffect(
+  loadCountries$ = createEffect(
     () => this.actions$.pipe(
       ofType(loadCountries),
       withLatestFrom(
