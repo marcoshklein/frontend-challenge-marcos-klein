@@ -7,13 +7,13 @@ import { IHolidays } from "../models/holiday"
 export interface IappState {
     countries: ICountries[];
     holidays: IHolidays[];
-    selectedCountrie: ICountry;
+    selectedCountry: ICountry;
 }
 
 export const appInitialState: IappState = {
     countries: [],
     holidays: [],
-    selectedCountrie: {code: '', name: ''} 
+    selectedCountry: {code: '', name: ''} 
 }
 
 
@@ -46,7 +46,7 @@ export const appReducer = createReducer(
     on(setSelectedContry, (state, { payload }) => {
         state = {
             ...state,
-            selectedCountrie: payload
+            selectedCountry: payload
         }
         return state;
     }),

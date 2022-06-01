@@ -26,7 +26,7 @@ export class DetailPage implements OnInit {
   );
 
   contry$ = this.store.select('app').pipe(
-    map(app => app.selectedCountrie),
+    map(app => app.selectedCountry),
   );
 
   ngOnInit() {
