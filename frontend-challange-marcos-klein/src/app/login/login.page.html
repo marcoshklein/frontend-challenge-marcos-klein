@@ -1,9 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+  <div class="container">
+
+    <form #form="ngForm">
+      <h1 class="h3 mb-3">Login</h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" [formControl]="emailFormControl" placeholder="name@example.com">
+        <div *ngIf="emailFormControl.hasError('email')" >
+          E-mail is invalid.
+        </div>
+        <div *ngIf="emailFormControl.hasError('required')" >
+          E-mail is required.
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" [formControl]="passwordFormControl" placeholder="Password">
+        <div *ngIf="passwordFormControl.hasError('minlength')">
+          Name must be at least 6 characters long.
+        </div>
+
+        <div *ngIf="passwordFormControl.hasError('required')" >
+          Password is required.
+        </div>
+      </div>
+
+      <button class="mt-2 btn btn-primary" type="submit" (click)="goToHome()" [disabled]="emailFormControl.invalid || passwordFormControl.invalid">Sign in</button>
+    </form>
+
+  </div>
 
 </ion-content>

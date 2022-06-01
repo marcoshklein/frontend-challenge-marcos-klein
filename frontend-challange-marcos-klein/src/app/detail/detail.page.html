@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Holidays of {{ (contry$ | async ).name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container mt-4 mb-4">
+
+    <table class="table table-light">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let holiday of holidays$ | async ; let i = index">
+          <td> {{ i }}</td>
+          <td> {{holiday.date}}</td>
+          <td> {{holiday.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+</ion-content>
